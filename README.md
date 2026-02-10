@@ -1,5 +1,5 @@
-Basics of Programming with Python
-A beginner-friendly Jupyter Notebook covering foundational Python programming concepts, NumPy array operations, and basic image processing using OpenCV and PIL.
+Basics of Programming with Python(lap1)
+
 
 📋 Contents
 TaskDescriptionSetupInstalling Anaconda, Jupyter, and SpyderNumPy ExercisesArray creation, indexing, and selectionTask 1Core NumPy operations and matrix manipulationTask 2Loading and visualizing images (OpenCV & PIL)Task 3Saving images to diskTask 4Displaying images as NumPy arraysTask 5Saving work via Git
