@@ -1,154 +1,141 @@
-# Basics Programming in Python (Lap1)
+Basics of Programming with Python
+A beginner-friendly Jupyter Notebook covering foundational Python programming concepts, NumPy array operations, and basic image processing using OpenCV and PIL.
 
-This repository contains a **complete beginner-level introduction to Python programming** implemented in a Jupyter Notebook titled:
+📋 Contents
+TaskDescriptionSetupInstalling Anaconda, Jupyter, and SpyderNumPy ExercisesArray creation, indexing, and selectionTask 1Core NumPy operations and matrix manipulationTask 2Loading and visualizing images (OpenCV & PIL)Task 3Saving images to diskTask 4Displaying images as NumPy arraysTask 5Saving work via Git
 
-📘 **Basics_Programming_Python.ipynb**
+⚙️ Setup
+Prerequisites
 
-The notebook explains Python concepts step by step and demonstrates them using executable code cells.  
-It is designed for **students who are new to programming** and want to understand Python fundamentals clearly and practically.
+Anaconda 3 — includes Python, Jupyter, and Spyder out of the box
 
----
+Installation Steps
 
-## 📌 Purpose of This Notebook
+Download and install the latest version of Anaconda 3 from anaconda.com
+Launch Jupyter Notebook or Spyder from the Anaconda Navigator
+Open Basics_Programming_Python.ipynb
 
-The goal of this notebook is to:
-- Teach Python from scratch
-- Explain programming concepts using simple examples
-- Help students understand how Python code behaves by running it
-- Build a foundation for more advanced topics such as data analysis, AI, and machine learning
 
----
+📦 Dependencies
+The following libraries are used in this notebook:
+bashpip install numpy opencv-python pillow matplotlib
+LibraryPurposenumpyArray creation and numerical operationsopencv-python (cv2)Image loading and savingPillow (PIL)Image loading, processing, and savingmatplotlibImage visualization and plotting
 
-## 🧠 What This Notebook Explains (Detailed)
+📚 Topics Covered
+NumPy Fundamentals
 
-### 1️⃣ Introduction to Python
-- What Python is and why it is popular
-- Why Python is used in:
-  - Software development
-  - Artificial Intelligence
-  - Data Science
-  - Automation
-- How Python code is written and executed in Jupyter Notebook
+Importing NumPy
+Creating arrays: zeros, ones, arange, linspace
+Generating random numbers and arrays (rand, randn)
+Creating identity matrices with eye
+Reshaping arrays
 
----
+NumPy Indexing & Selection
 
-### 2️⃣ Python Syntax Basics
-- How Python statements are written
-- Importance of indentation in Python
-- Difference between Python and other languages (no semicolons, no braces)
-- Running simple Python commands
+Accessing specific elements by index
+Extracting rows and columns
+Slicing 2D arrays to get sub-arrays
 
-Example concepts:
-```python
-print("Hello World")
+Image Processing with OpenCV & PIL (Tasks 2–4)
 
-{End of Lap 1}
+Reading images using cv2.imread() and PIL.Image.open()
+Visualizing images with matplotlib.pyplot
+Saving images to disk with cv2.imwrite() and img.save()
+Converting images to NumPy arrays and inspecting their shape
 
-Image Sampling, Quantization, and Image Operations(Lap2)
 
-This project demonstrates basic image processing techniques using Python, including:
+🗂️ File Structure
+project/
+├── Basics_Programming_Python.ipynb   # Main notebook
+├── cameraman.tif                     # Sample image (required for Task 2)
+├── lena_gray_512.tif                 # Sample image (required for Task 2)
+└── README.md
 
-Image sampling (downsampling)
+Note: Update the image file paths in cells for Tasks 2–4 to match your local directory before running.
 
-Image quantization (reducing gray levels)
 
-Image addition
+🚀 Usage
 
-Image union using bitwise OR
+Clone or download this repository
+Place the required image files (cameraman.tif, lena_gray_512.tif) in your working directory
+Update the file paths in the notebook cells accordingly
+Run the notebook cells sequentially from top to bottom
 
-The implementation uses OpenCV, NumPy, Matplotlib, and Pillow (PIL).
 
-Features
-1. Image Sampling
+💾 Saving Your Work
+After completing the notebook, commit your progress to Git:
+bashgit add .
+git commit -m "Completed lab1 tutorial"
+git push origin master
 
-Reduces the spatial resolution of an image by a given factor using nearest-neighbor interpolation.
+📖 Resources
 
-2. Image Quantization
+NumPy Cheat Sheet (DataCamp)
+NumPy Official Docs
+OpenCV Python Tutorials
+Pillow Documentation
+{end of lap 1}
+////////////
+LAP 2 — Image Sampling, Quantization & Arithmetic Operations
+A Jupyter Notebook demonstrating core image processing techniques including spatial downsampling, grayscale quantization, image addition, and bitwise union operations using OpenCV, PIL, NumPy, and Matplotlib.
 
-Reduces the number of grayscale intensity levels in an image.
+📋 Contents
+SectionDescriptionImage LoadingLoad grayscale images using OpenCV and PILSamplingDownsample an image by a given factor using nearest-neighbor interpolationQuantizationReduce the number of grayscale intensity levelsVisualizationSide-by-side display of original, sampled, and quantized imagesImage AdditionAdd two images pixel-by-pixel using NumPy arraysBitwise UnionPerform bitwise OR between two images
 
-3. Image Visualization
+⚙️ Setup
+Prerequisites
 
-Displays:
+Python 3.x
+Anaconda (recommended) or a standard Python environment with pip
 
-Original image
+Installation
+Install the required libraries:
+bashpip install numpy opencv-python pillow matplotlib
 
-Sampled image
+📦 Dependencies
+LibraryPurposenumpyArray operations and pixel-level arithmeticopencv-python (cv2)Grayscale image loading and resizingPillow (PIL)Image loading, resizing, and displaymatplotlibImage visualization and subplot rendering
 
-Quantized image
+🗂️ Required Image Files
+The following image files must be present in the same directory as the notebook:
+FileUsed Inlena_gray_512.tifSampling, Quantization, and Image Additioncameraman.tifImage Additiona.JPGBitwise Unionb.JPGBitwise Union
 
-Side by side using Matplotlib.
+Note: All images are resized to 400×400 pixels before arithmetic operations to ensure compatible array dimensions.
 
+
+📚 Topics Covered
+1. Spatial Sampling (sample_image)
+Downsamples an image by an integer factor using cv2.resize() with nearest-neighbor interpolation.
+pythonsampled_image = sample_image(original_image, factor=14)
+2. Grayscale Quantization (quantize_image)
+Reduces the number of intensity levels in an image by grouping pixel values into discrete steps.
+pythonquantized_image = quantize_image(original_image, levels=9)
+3. Image Visualization (plot_images)
+Displays the original, sampled, and quantized images side by side using Matplotlib subplots.
 4. Image Addition
+Adds two grayscale images pixel-by-pixel by converting them to NumPy arrays.
+pythonaddition = im1arr + im2arr
 
-Adds two grayscale images pixel-by-pixel after resizing them to the same dimensions.
+⚠️ Raw addition may cause pixel overflow beyond 255. Consider using np.clip() or cv2.add() for overflow-safe addition.
 
-5. Image Union (Bitwise OR)
+5. Bitwise Union (OR)
+Performs a bitwise OR between two images, combining their bright regions.
+pythonunion = im3arr | im4arr
 
-Performs a union operation between two images using the bitwise OR operator.
+🚀 Usage
 
-Required Libraries
+Place all required image files in the same directory as LAP_2.ipynb
+Launch Jupyter Notebook:
 
-Make sure you have the following Python libraries installed:
+bash   jupyter notebook LAP_2.ipynb
 
-pip install opencv-python numpy matplotlib pillow
-
-Input Images
-
-Place the following images in the project directory:
-
-lena_gray_512.tif
-
-cameraman.tif
-
-a.JPG
-
-b.JPG
-
-How the Code Works
-Sampling Parameters
-sampling_factor = 14
+Run all cells sequentially from top to bottom
 
 
-Higher value → more downsampling → lower resolution.
-
-Quantization Parameters
-quantization_levels = 9
-
-
-Fewer levels → more visible intensity steps.
-
-Functions Overview
-sample_image(image, factor)
-
-Downsamples the image by the given factor.
-
-quantize_image(image, levels)
-
-Reduces grayscale levels in the image.
-
-plot_images(original, sampled, quantized)
-
-Displays original, sampled, and quantized images.
-
-Output
-
-A figure showing:
-
-Original Image
-
-Sampled Image
-
-Quantized Image
-
-A new image created by adding two images
-
-A new image created by bitwise union of two images
-
-Notes
-
-Images are resized to 400 × 400 before addition or union to ensure matching dimensions.
-
-Bitwise OR is useful for combining image features or masks.
-
-Image addition may overflow; results are cast to uint8.
+🗂️ File Structure
+project/
+├── LAP_2.ipynb          # Main notebook
+├── lena_gray_512.tif    # Grayscale test image
+├── cameraman.tif        # Grayscale test image
+├── a.JPG                # Custom image for bitwise operation
+├── b.JPG                # Custom image for bitwise operation
+└── README.md
